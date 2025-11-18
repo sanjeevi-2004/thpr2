@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- THIS IS THE MOST IMPORTANT FIX: Makes the site responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Dashboard - Innovate</title>
+    
+    <!-- Link to your main stylesheet -->
+    <link rel="stylesheet" href="./style .css">
+    
+    <!-- Font links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- 1. Include the Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+   <header class="main-header">
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">Stackly</a>
+        
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="./dashboard.html" class="nav-link">Dashboard</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="login.html" class="nav-link">Log In</a></li>
+            <li class="nav-item"><a href="signup.html" class="nav-link cta-button">Sign Up</a></li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+
+    <main>
+        <!-- ======== Dashboard Overview (Hero) ======== -->
+        <section class="page-hero">
+            <div class="container fade-in">
+                <h1 class="page-title">Dashboard Overview</h1>
+                <p class="page-subtitle">Track your store performance, monitor sales, and manage inventory.</p>
+            </div>
+        </section>
+
+        <!-- ======== KPI Card Section ======== -->
+        <section class="kpi-section">
+            <div class="kpi-grid container">
+                
+                <!-- Card 1: Total Sales -->
+                <div class="kpi-card fade-in">
+                    <ion-icon name="cash-outline"></ion-icon>
+                    <div class="kpi-text">
+                        <p>Total Sales</p>
+                        <h3>₹4,52,340</h3>
+                    </div>
+                    <span class="kpi-trend positive"><ion-icon name="arrow-up-outline"></ion-icon> 8.3%</span>
+                </div>
+                
+                <!-- Card 2: New Orders -->
+                <div class="kpi-card fade-in">
+                    <ion-icon name="cart-outline"></ion-icon>
+                    <div class="kpi-text">
+                        <p>New Orders</p>
+                        <h3>320</h3>
+                    </div>
+                    <span class="kpi-trend positive"><ion-icon name="arrow-up-outline"></ion-icon> 5.7%</span>
+                </div>
+                
+                <!-- Card 3: Total Customers -->
+                <div class="kpi-card fade-in">
+                    <ion-icon name="people-outline"></ion-icon>
+                    <div class="kpi-text">
+                        <p>Total Customers</p>
+                        <h3>1,245</h3>
+                    </div>
+                    <span class="kpi-trend negative"><ion-icon name="arrow-down-outline"></ion-icon> 2.1%</span>
+                </div>
+                
+                <!-- Card 4: Products in Stock -->
+                <div class="kpi-card fade-in">
+                    <ion-icon name="cube-outline"></ion-icon>
+                    <div class="kpi-text">
+                        <p>Products in Stock</p>
+                        <h3>78</h3>
+                    </div>
+                    <span class="kpi-trend">Stable</span>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- ======== Main Charts Section ======== -->
+        <section class="dashboard-charts-area">
+            <div class="container">
+                
+                <!-- Chart 1: Sales Statistics (Bar) -->
+                <div class="chart-container-large fade-in">
+                    <h2 class="chart-title">Sales Statistics</h2>
+                    <p class="chart-subtitle">Monthly corporate product sales over the past six months.</p>
+                    <canvas id="salesBarChart"></canvas>
+                </div>
+                
+                <!-- Chart 2 & 3: Store Performance (Donut & H-Bar) -->
+                <div class="chart-grid-double">
+                    <div class="chart-container-medium fade-in">
+                        <h2 class="chart-title">Sales by Category</h2>
+                        <canvas id="categoryDonutChart"></canvas>
+                    </div>
+                    <div class="chart-container-medium fade-in">
+                        <h2 class="chart-title">Revenue by Region</h2>
+                        <canvas id="regionBarChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+<!-- ======== FOOTER (NEW LAYOUT) ======== -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            
+            <!-- Column 1: Brand & Socials -->
+            <div class="footer-col">
+                <a href="index.html" class="nav-logo">Stackly</a>
+                <p class="footer-tagline">Digital Services.</p>
+                <!-- This replaces the old .social-links div -->
+                <div class="social-links-footer">
+                    <a href="#" title="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a>
+                    <a href="#" title="GitHub"><ion-icon name="logo-github"></ion-icon></a>
+                    <a href="#" title="facebook"><ion-icon name="logo-facebook"></ion-icon></a>
+                    <a href="#" title="instagram"><ion-icon name="logo-instagram"></ion-icon></a>
+                    <a href="#" title="X"><ion-icon name="logo-X"></ion-icon></a>
+                </div>
+            </div>
+            
+            <!-- Column 2: Quick Links -->
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <!-- Column 3: Services -->
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="services.html">UI/UX Design</a></li>
+                    <li><a href="services.html">Web Development</a></li>
+                    <li><a href="services.html">Digital Marketing</a></li>
+                    <li><a href="login.html">Client Login</a></li>
+                </ul>
+            </div>
+            
+            <!-- Column 4: Get in Touch -->
+            <div class="footer-col">
+                <h4>Get in Touch</h4>
+                <p>
+                    123 Innovate St, Design City<br>
+                    hello@innovate.com<br>
+                    (+1) 555-123-4567
+                </p>
+            </div>
+
+        </div>
+        
+        <!-- Copyright Bar -->
+        <div class="footer-copyright">
+            <p>&copy; 2025 Innovate. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <!-- IonIcons Script -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <!-- 2. Link your standard script.js (handles hamburger menu) -->
+    <script src="script.js"></script>
+    
+    <!-- 3. Link the NEW charts.js file (draws the charts) -->
+    <script src="charts.js"></script>
+</body>
+</html>
