@@ -7,16 +7,27 @@
     <link rel="stylesheet" href="./style .css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <header class="main-header">
+<header class="main-header">
     <nav class="navbar">
-        <a href="index.html" class="nav-logo">Stackly</a>
-        
+        <div class="logo-group">
+            <a href="index.html" class="nav-logo">
+                <img src="./stackly.png" alt="Stackly Logo">
+            </a>
+            <p class="logo-tagline"> Digital Services</p>
+        </div>
+
         <ul class="nav-menu">
-            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item dropdown">
+                <a href="index.html" class="nav-link">Home ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="./home2.html" class="dropdown-link">Home 2</a></li>
+                </ul>
+            </li>
             <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
             <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
             <li class="nav-item"><a href="./dashboard.html" class="nav-link">Dashboard</a></li>
@@ -31,7 +42,6 @@
         </div>
     </nav>
 </header>
-
     <main>
         <section class="hero" id="hero">
             <div class="hero-content fade-in">
@@ -126,7 +136,9 @@
                     <div class="form-group">
                         <input type="text" placeholder="Your Name" required>
                         <input type="email" placeholder="Your Email" required>
+                       
                     </div>
+                    
                     <textarea placeholder="Tell us about your project..." rows="6"></textarea>
                     <button type="submit" class="cta-button">Send Message</button>
                 </form>
@@ -140,18 +152,20 @@
         <div class="footer-grid">
             
             <!-- Column 1: Brand & Socials -->
-            <div class="footer-col">
-                <a href="index.html" class="nav-logo">Stackly</a>
-                <p class="footer-tagline">Digital Services.</p>
-                <!-- This replaces the old .social-links div -->
-                <div class="social-links-footer">
-                    <a href="#" title="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a>
-                    <a href="#" title="GitHub"><ion-icon name="logo-github"></ion-icon></a>
-                    <a href="#" title="facebook"><ion-icon name="logo-facebook"></ion-icon></a>
-                    <a href="#" title="instagram"><ion-icon name="logo-instagram"></ion-icon></a>
-                    <a href="#" title="X"><ion-icon name="logo-X"></ion-icon></a>
-                </div>
-            </div>
+          <div class="footer-col">
+    <a href="index.html" class="nav-logo">
+        <img src="./stackly.png" alt="Stackly Logo">
+    </a>
+    
+    <p class="footer-tagline">Digital Services.</p>
+    
+    <div class="social-links-footer">
+        <a href="#" title="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a>
+        <a href="#" title="GitHub"><ion-icon name="logo-github"></ion-icon></a>
+        <a href="#" title="facebook"><ion-icon name="logo-facebook"></ion-icon></a>
+        <a href="#" title="instagram"><ion-icon name="logo-instagram"></ion-icon></a>
+    </div>
+</div>
             
             <!-- Column 2: Quick Links -->
             <div class="footer-col">

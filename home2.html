@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovate - Home Variant 2</title>
+    <link rel="stylesheet" href="./style .css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Hero Variant 2 (Split Layout) --- */
+        .hero-v2 {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.15), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(236, 72, 153, 0.1), transparent 40%);
+        }
+        
+        .hero-split-container {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-img-wrapper {
+            position: relative;
+        }
+        
+        .hero-img-wrapper img {
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(139, 92, 246, 0.2);
+            border: 1px solid rgba(255,255,255,0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* --- Stats Section --- */
+        .stats-section {
+            padding: 4rem 0;
+            background: rgba(255,255,255,0.02);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--color-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* --- Process / Cards Variant --- */
+        .process-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .process-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: var(--color-primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .process-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .step-number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.03);
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+
+        /* --- Testimonials --- */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--color-surface);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .client-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #333;
+            object-fit: cover;
+        }
+
+        /* Responsive adjustments for Home 2 */
+        @media (max-width: 900px) {
+            .hero-split-container { grid-template-columns: 1fr; text-align: center; }
+            .hero-img-wrapper { margin-top: 2rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonial-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="main-header">
+    <nav class="navbar">
+        <div class="logo-group">
+            <a href="home2.html" class="nav-logo">
+                <img src="./stackly.png" alt="Stackly Logo">
+            </a>
+            <p class="logo-tagline"> Digital Services</p>
+        </div>
+
+        <ul class="nav-menu">
+            <li class="nav-item dropdown">
+                <a href="index.html" class="nav-link" style="color: #fff;">Home ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="./index.html" class="dropdown-link">Home 1</a></li>
+                    <li><a href="./home2.html" class="dropdown-link">Home 2</a></li>
+                </ul>
+            </li>
+            <li class="nav-item"><a href="services2.html" class="nav-link">Services</a></li>
+            <li class="nav-item"><a href="about2.html" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="./dashboard2.html" class="nav-link">Dashboard</a></li>
+            <li class="nav-item"><a href="contact2.html" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="login.html" class="nav-link">Log In</a></li>
+            <li class="nav-item"><a href="signup.html" class="nav-link cta-button">Sign Up</a></li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="hero-v2">
+        <div class="hero-split-container fade-in">
+            <div class="hero-text">
+                <h1 class="hero-title" style="text-align: left;">Future-Proof Your <br><span class="highlight">Digital Strategy</span></h1>
+                <p class="hero-subtitle" style="margin: 0 0 2rem 0; text-align: left;">
+                    Stop catching up and start leading. We build the software architectures of tomorrow, today. Scalable, secure, and stunning.
+                </p>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="./contact2.html" class="cta-button large">Get Started</a>
+                    <a href="./services2.html" class="cta-button large" style="background: transparent; border-color: rgba(255,255,255,0.2);">View Work</a>
+                </div>
+            </div>
+            <div class="hero-img-wrapper">
+                <img src="./abt us.webp" alt="Abstract Digital Art">
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid fade-in">
+                <div class="stat-item">
+                    <span class="stat-number">150+</span>
+                    <p>Projects Launched</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">98%</span>
+                    <p>Client Retention</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">12</span>
+                    <p>Design Awards</p>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5+</span>
+                    <p>Years Experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process">
+        <div class="container">
+            <h2 class="section-title fade-in">How We Work</h2>
+            <div class="services-grid"> <div class="process-card fade-in">
+                    <div class="step-number">01</div>
+                    <ion-icon name="bulb-outline" style="font-size: 3rem; color: #8b5cf6; margin-bottom: 1rem;"></ion-icon>
+                    <h3>Discover</h3>
+                    <p>We dive deep into your business model to understand your core challenges and opportunities.</p>
+                </div>
+
+                <div class="process-card fade-in">
+                    <div class="step-number">02</div>
+                    <ion-icon name="code-slash-outline" style="font-size: 3rem; color: #ec4899; margin-bottom: 1rem;"></ion-icon>
+                    <h3>Develop</h3>
+                    <p>Agile methodology ensures we build rapidly, test frequently, and deploy flawlessly.</p>
+                </div>
+
+                <div class="process-card fade-in">
+                    <div class="step-number">03</div>
+                    <ion-icon name="rocket-outline" style="font-size: 3rem; color: #8b5cf6; margin-bottom: 1rem;"></ion-icon>
+                    <h3>Deliver</h3>
+                    <p>We launch your product and provide ongoing support to ensure sustained growth.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" style="background-color: #0f0f0f;">
+        <div class="container">
+            <h2 class="section-title fade-in">Client Stories</h2>
+            <div class="testimonial-grid">
+                
+                <div class="testimonial-card fade-in">
+                    <ion-icon name="quote" style="font-size: 2rem; color: #333;"></ion-icon>
+                    <p style="font-style: italic; color: #ccc;">"Innovate transformed our outdated platform into a sleek, high-converting machine. The team is simply world-class."</p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah" class="client-avatar">
+                        <div>
+                            <h4 style="margin:0; font-size: 1rem;">Sarah Jenkins</h4>
+                            <span style="font-size: 0.8rem; color: #666;">CEO, TechFlow</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <ion-icon name="quote" style="font-size: 2rem; color: #333;"></ion-icon>
+                    <p style="font-style: italic; color: #ccc;">"The attention to detail in the UI/UX design was impressive. They didn't just build a website, they built a brand."</p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael" class="client-avatar">
+                        <div>
+                            <h4 style="margin:0; font-size: 1rem;">Michael Ross</h4>
+                            <span style="font-size: 0.8rem; color: #666;">Founder, StartUp Inc</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <ion-icon name="quote" style="font-size: 2rem; color: #333;"></ion-icon>
+                    <p style="font-style: italic; color: #ccc;">"Security was our top concern, and Innovate delivered a fortress. Highly recommend their backend team."</p>
+                    <div class="client-info">
+                        <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="David" class="client-avatar">
+                        <div>
+                            <h4 style="margin:0; font-size: 1rem;">David Chen</h4>
+                            <span style="font-size: 0.8rem; color: #666;">CTO, FinSecure</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container fade-in">
+            <h2 class="section-title">Ready to Start?</h2>
+            <p class="contact-subtitle">Let's build something amazing together.</p>
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                </div>
+                <textarea placeholder="Tell us about your project..." rows="6"></textarea>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="home2.html" class="nav-logo">
+                    <img src="./stackly.png" alt="Stackly Logo">
+                </a>
+                <p class="footer-tagline">Digital Services.</p>
+                <div class="social-links-footer">
+                    <a href="#" title="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a>
+                    <a href="#" title="GitHub"><ion-icon name="logo-github"></ion-icon></a>
+                    <a href="#" title="facebook"><ion-icon name="logo-facebook"></ion-icon></a>
+                    <a href="#" title="instagram"><ion-icon name="logo-instagram"></ion-icon></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="home2.html">Home</a></li>
+                    <li><a href="about2.html">About Us</a></li>
+                    <li><a href="services2.html">Services</a></li>
+                    <li><a href="contact2.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="services2.html">UI/UX Design</a></li>
+                    <li><a href="services2.html">Web Development</a></li>
+                    <li><a href="services2.html">Digital Marketing</a></li>
+                    <li><a href="login.html">Client Login</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Get in Touch</h4>
+                <p>
+                    123 Innovate St, Design City<br>
+                    hello@innovate.com<br>
+                    (+1) 555-123-4567
+                </p>
+            </div>
+        </div>
+        
+        <div class="footer-copyright">
+            <p>&copy; 2025 Innovate. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    
+    const statsSection = document.querySelector('.stats-section');
+    const statNumbers = document.querySelectorAll('.stat-number');
+    let started = false; // Ensures animation only runs once
+
+    function animateStats(el) {
+        // 1. Get the text (e.g., "150+")
+        const originalText = el.innerText;
+        
+        // 2. Extract the number (150) and the suffix (+ or %)
+        const target = parseInt(originalText.replace(/\D/g, '')); 
+        const suffix = originalText.replace(/[0-9]/g, ''); // Removes numbers to leave symbols
+
+        // Safety check: if there is no number, stop
+        if (isNaN(target)) return;
+
+        // 3. Set starting variables
+        let current = 0;
+        const increment = target / 100; // Adjust this to change speed (higher divisor = slower)
+        
+        const updateCount = () => {
+            current += increment;
+
+            if (current < target) {
+                // Update text with rounded number + original suffix
+                el.innerText = Math.ceil(current) + suffix;
+                requestAnimationFrame(updateCount);
+            } else {
+                // Ensure it finishes exactly on the original text
+                el.innerText = originalText;
+            }
+        };
+
+        updateCount();
+    }
+
+    // 4. Create Observer to watch when user scrolls to the section
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !started) {
+                statNumbers.forEach(stat => animateStats(stat));
+                started = true; // Lock it so it doesn't restart on scroll up
+            }
+        });
+    }, { threshold: 0.5 }); // Trigger when 50% of the section is visible
+
+    // 5. Start observing
+    if (statsSection) {
+        observer.observe(statsSection);
+    }
+});
+</script>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

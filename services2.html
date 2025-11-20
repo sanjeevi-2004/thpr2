@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovate - Services V2</title>
+    <link rel="stylesheet" href="./style .css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Hero V2 --- */
+        .services-hero {
+            text-align: center;
+            padding: 160px 0 80px;
+            background: radial-gradient(circle at center, rgba(139, 92, 246, 0.1), transparent 70%);
+        }
+        
+        .hero-badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #ec4899;
+            border: 1px solid rgba(236, 72, 153, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        /* --- Zig Zag Layout --- */
+        .feature-row {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            padding: 5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Every even row reverses the order (Image Left vs Image Right) */
+        .feature-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .feature-text {
+            flex: 1;
+        }
+
+        .feature-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .feature-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.5s ease;
+        }
+
+        .feature-row:hover .feature-image img {
+            transform: scale(1.02);
+        }
+
+        .feature-number {
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 1rem;
+            background: linear-gradient(180deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two columns for list items */
+            gap: 1rem;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+
+        .feature-list li ion-icon {
+            color: #8b5cf6;
+            font-size: 1.2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .feature-row, .feature-row:nth-child(even) {
+                flex-direction: column; /* Always stack on mobile */
+                text-align: left;
+                gap: 2rem;
+            }
+            
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-number {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="main-header">
+    <nav class="navbar">
+        <div class="logo-group">
+            <a href="home2.html" class="nav-logo">
+                <img src="./stackly.png" alt="Stackly Logo">
+            </a>
+            <p class="logo-tagline"> Digital Services</p>
+        </div>
+        
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="./home2.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="services2.html" class="nav-link">Services</a></li>
+            <li class="nav-item"><a href="about2.html" class="nav-link" style="color: #fff;">About</a></li>
+            <li class="nav-item"><a href="./dashboard2.html" class="nav-link">Dashboard</a></li>
+            <li class="nav-item"><a href="contact2.html" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="login.html" class="nav-link">Log In</a></li>
+            <li class="nav-item"><a href="signup.html" class="nav-link cta-button">Sign Up</a></li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <section class="services-hero">
+        <div class="container fade-in">
+            <span class="hero-badge">World Class Engineering</span>
+            <h1 class="page-title">Capabilities & <span style="color:#8b5cf6">Solutions</span></h1>
+            <p class="page-subtitle">Comprehensive digital services designed to scale your business.</p>
+        </div>
+    </section>
+
+    <section class="zig-zag-container">
+        <div class="container">
+            
+            <!-- Item 1: Image Right -->
+            <div class="feature-row fade-in">
+                <div class="feature-text">
+                    <div class="feature-number">01</div>
+                    <h2>UI/UX Design</h2>
+                    <p>We create digital products that are easy to use, beautiful to look at, and impossible to ignore. Our design process is rooted in behavioral psychology and data.</p>
+                    <ul class="feature-list">
+                        <li><ion-icon name="checkmark-circle-outline"></ion-icon> Design Systems</li>
+                        <li><ion-icon name="checkmark-circle-outline"></ion-icon> Wireframing</li>
+                        <li><ion-icon name="checkmark-circle-outline"></ion-icon> Mobile App Design</li>
+                        <li><ion-icon name="checkmark-circle-outline"></ion-icon> User Testing</li>
+                    </ul>
+                </div>
+                <div class="feature-image">
+                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1000&q=80" alt="UI Design">
+                </div>
+            </div>
+
+            <!-- Item 2: Image Left (Due to :nth-child(even) CSS) -->
+            <div class="feature-row fade-in">
+                <div class="feature-text">
+                    <div class="feature-number">02</div>
+                    <h2>Web Development</h2>
+                    <p>Speed, security, and scalability are non-negotiable. We build robust applications using modern frameworks like React, Next.js, and Node.js.</p>
+                    <ul class="feature-list">
+                        <li><ion-icon name="code-slash-outline"></ion-icon> Full Stack Dev</li>
+                        <li><ion-icon name="code-slash-outline"></ion-icon> API Integration</li>
+                        <li><ion-icon name="code-slash-outline"></ion-icon> Headless CMS</li>
+                        <li><ion-icon name="code-slash-outline"></ion-icon> PWA Development</li>
+                    </ul>
+                </div>
+                <div class="feature-image">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1000&q=80" alt="Coding">
+                </div>
+            </div>
+
+            <!-- Item 3: Image Right -->
+            <div class="feature-row fade-in">
+                <div class="feature-text">
+                    <div class="feature-number">03</div>
+                    <h2>Digital Marketing</h2>
+                    <p>Building it is only half the battle. We help you find your audience through targeted campaigns, SEO mastery, and content strategy.</p>
+                    <ul class="feature-list">
+                        <li><ion-icon name="trending-up-outline"></ion-icon> SEO & SEM</li>
+                        <li><ion-icon name="trending-up-outline"></ion-icon> Social Media</li>
+                        <li><ion-icon name="trending-up-outline"></ion-icon> Email Automation</li>
+                        <li><ion-icon name="trending-up-outline"></ion-icon> Analytics</li>
+                    </ul>
+                </div>
+                <div class="feature-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80" alt="Marketing Analytics">
+                </div>
+            </div>
+
+            <!-- Item 4: Image Left -->
+            <div class="feature-row fade-in">
+                <div class="feature-text">
+                    <div class="feature-number">04</div>
+                    <h2>Cyber Security</h2>
+                    <p>In a world of increasing threats, we provide peace of mind. Our security protocols ensure your data—and your customers' data—remains safe.</p>
+                    <ul class="feature-list">
+                        <li><ion-icon name="shield-checkmark-outline"></ion-icon> Penetration Testing</li>
+                        <li><ion-icon name="shield-checkmark-outline"></ion-icon> 24/7 Monitoring</li>
+                        <li><ion-icon name="shield-checkmark-outline"></ion-icon> Compliance</li>
+                        <li><ion-icon name="shield-checkmark-outline"></ion-icon> Risk Audits</li>
+                    </ul>
+                </div>
+                <div class="feature-image">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1000&q=80" alt="Security">
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="home2.html" class="nav-logo">
+                    <img src="./stackly.png" alt="Stackly Logo">
+                </a>
+                <p class="footer-tagline">Digital Services.</p>
+                <div class="social-links-footer">
+                    <a href="#" title="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a>
+                    <a href="#" title="GitHub"><ion-icon name="logo-github"></ion-icon></a>
+                    <a href="#" title="facebook"><ion-icon name="logo-facebook"></ion-icon></a>
+                    <a href="#" title="instagram"><ion-icon name="logo-instagram"></ion-icon></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="home2.html">Home</a></li>
+                    <li><a href="about2.html">About Us</a></li>
+                    <li><a href="services2.html">Services</a></li>
+                    <li><a href="contact2.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="services2.html">UI/UX Design</a></li>
+                    <li><a href="services2.html">Web Development</a></li>
+                    <li><a href="services2.html">Digital Marketing</a></li>
+                    <li><a href="login.html">Client Login</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Get in Touch</h4>
+                <p>
+                    123 Innovate St, Design City<br>
+                    hello@innovate.com<br>
+                    (+1) 555-123-4567
+                </p>
+            </div>
+        </div>
+        
+        <div class="footer-copyright">
+            <p>&copy; 2025 Innovate. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

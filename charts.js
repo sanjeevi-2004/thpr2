@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     Chart.defaults.borderColor = 'rgba(255, 255, 255, 0.1)'; // Lighter border for grids
 
     // Define our primary gold color from the CSS
-    const primaryColor = '#E0B055';
-    const primaryColorTransparent = '#E0B05599';
+    const primaryColor = '#8b5cf6';
+    const primaryColorTransparent = '#ea0dd499';
 
     // --- 1. Sales Statistics (Bar Chart) ---
     const salesBarChartCtx = document.getElementById('salesBarChart');
