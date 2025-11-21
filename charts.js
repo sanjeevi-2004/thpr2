@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         new Chart(categoryDonutChartCtx, {
             type: 'doughnut',
             data: {
-                labels: ['Laptops', 'Printers', 'Headphones', 'Computers', 'Accessories'],
+                labels: ['UI & UX', 'Web developement', 'Digital marketting', 'App developement', 'Ai services'],
                 datasets: [{
                     label: 'Sales',
                     data: [35, 15, 20, 10, 20],
