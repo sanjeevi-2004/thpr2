@@ -1,64 +1,105 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ======== Mobile Navigation Toggle ========
+    // ======== Mobile Navigation Toggle (Hamburger) ========
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
 
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
+    if(hamburger) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    }
+
+    // ======== Mobile Dropdown Logic (The Fix) ========
+    // Select all nav items that have the 'dropdown' class
+    const dropdowns = document.querySelectorAll('.nav-item.dropdown');
+
+    dropdowns.forEach(dropdown => {
+        const dropdownLink = dropdown.querySelector('a'); // The parent link (e.g. "Services")
+
+        dropdownLink.addEventListener('click', (e) => {
+            // Only run this logic on mobile screens (768px or less)
+            if (window.innerWidth <= 768) {
+                // Prevent the link from jumping to a new page immediately
+                e.preventDefault();
+                
+                // Toggle the active class on the parent LI
+                dropdown.classList.toggle('active');
+            }
+        });
     });
 
-    // Close menu when a link is clicked
+    // ======== Close menu when a standard link is clicked ========
     document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
+        link.addEventListener('click', (e) => {
+            // CHECK: Is this link part of a dropdown toggle?
+            // If it is a dropdown toggle AND we are on mobile, DO NOT close the menu yet.
+            if (link.parentElement.classList.contains('dropdown') && window.innerWidth <= 768) {
+                return; // Stop here, let the Dropdown Logic above handle it
+            }
+
+            // Otherwise, close the menu (for normal links or desktop clicks)
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
+            
+            // Also close any open dropdowns when closing the main menu
+            document.querySelectorAll('.nav-item.dropdown').forEach(item => {
+                item.classList.remove('active');
+            });
         });
     });
 
     // ======== Sticky Header on Scroll ========
     const header = document.querySelector('.main-header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+    if(header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
 
     // ======== Scroll-in Fade Animations ========
     const faders = document.querySelectorAll('.fade-in');
+    
+    if (faders.length > 0) {
+        const appearOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
 
-    const appearOptions = {
-        threshold: 0.1, // Trigger when 10% of the item is visible
-        rootMargin: "0px 0px -50px 0px" // Start 50px before it enters view
-    };
+        const appearOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            });
+        }, appearOptions);
 
-    const appearOnScroll = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-                return;
-            }
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target); // Stop observing once it's visible
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
         });
-    }, appearOptions);
+    }
 
-    faders.forEach(fader => {
-        appearOnScroll.observe(fader);
-    });
-
-    // ======== Smooth Scrolling for Nav Links ========
-    // Note: html { scroll-behavior: smooth; } in CSS does most of this,
-    // but this JS is a more robust fallback. We'll keep it simple
-    // and rely on the CSS-native method for this demo.
-    // If you need more complex scrolling, you'd add this:
-   
+    // ======== Smooth Scrolling (Fallback) ========
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
+            // Don't run smooth scroll if it's a dropdown toggle on mobile
+            if (this.parentElement.classList.contains('dropdown') && window.innerWidth <= 768) {
+                return;
+            }
+
             e.preventDefault();
             const targetId = this.getAttribute('href');
+            
+            // Safety check if href is just "#"
+            if(targetId === '#') return;
+
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
@@ -68,8 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-    
-    
+
 });
 
 // ========

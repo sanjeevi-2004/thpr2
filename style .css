@@ -35,7 +35,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: var(--header-height); /* Prevents header covering titles */
+    scroll-padding-top: var(--header-height);
 }
 
 body {
@@ -43,17 +43,17 @@ body {
     background-color: var(--color-bg);
     color: var(--color-text);
     line-height: 1.7;
-    overflow-x: hidden; /* Prevents horizontal scroll on mobile */
+    overflow-x: hidden;
 }
 
 .container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 1.5rem; /* Slightly reduced padding for mobile */
+    padding: 0 1.5rem;
 }
 
 section {
-    padding: 5rem 0; /* Standard padding */
+    padding: 5rem 0;
 }
 
 h1, h2, h3, h4 {
@@ -76,7 +76,7 @@ h1, h2, h3, h4 {
     display: block;
     width: 60px;
     height: 3px;
-    background-color: var(--color-primary); /* Gradient works here because it's a background image essentially */
+    background: var(--color-primary);
     margin: 1rem auto 0;
 }
 
@@ -87,7 +87,7 @@ p {
 
 a {
     text-decoration: none;
-    color: var(--color-primary); /* This might not show gradient on text, usually defaults to black or first color */
+    color: var(--color-primary);
     transition: color 0.3s ease;
 }
 
@@ -106,29 +106,22 @@ img {
 .cta-button {
     display: inline-block;
     background: var(--color-primary);
-    color: var(--color-white); /* Ensure text is white initially */
+    color: var(--color-white);
     padding: 12px 28px;
     border-radius: 50px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
-    
-    /* Uses the solid color variable we defined in root */
     border: 2px solid var(--color-primary-solid); 
 }
 
 .cta-button:hover {
     background: transparent;
-    
-    /* Uses the solid color variable so text is visible */
     color: var(--color-primary-solid); 
-    
-    /* Ensure the border color remains visible */
     border-color: var(--color-primary-solid);
-    
     transform: translateY(-3px);
-    box-shadow: 0 0 15px rgba(236, 72, 153, 0.4); /* Optional: Adds a nice glow */
+    box-shadow: 0 0 15px rgba(236, 72, 153, 0.4);
 }
 
 .nav-link.cta-button::after { display: none; }
@@ -151,7 +144,10 @@ img {
     padding: 1rem 0;
     transition: padding 0.3s ease;
     border-bottom: 1px solid rgba(255,255,255,0.05);
-    
+}
+
+.main-header.scrolled {
+    padding: 0.5rem 0;
 }
 
 .navbar {
@@ -162,72 +158,25 @@ img {
     margin: 0 auto;
     padding: 0 2rem;
 }
-/* Parent Container for Dropdown */
-.nav-item.dropdown {
-    position: relative;
-}
 
-/* The Dropdown Menu (Hidden by default) */
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    background-color: #fff; /* Match your navbar background */
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    min-width: 160px;
-    z-index: 1;
-    list-style: none;
-    padding: 0;
-    top: 100%; /* Positions it directly below the link */
-    left: 0;
-}
-
-/* Dropdown Links Styling */
-.dropdown-menu li a {
-    color: #333; /* Adjust text color */
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-/* Show Dropdown on Hover */
-.nav-item.dropdown:hover .dropdown-menu {
-    display: block;
-}
-
-/* Hover effect for dropdown items */
-.dropdown-menu li a:hover {
-    background-color: #f1f1f1;
-}
-
-/* New styling for the image logo */
-.nav-logo img {
-    height: 40px; /* Adjust this value as needed for your logo size */
-    width: auto;
-    display: block;
-}
-/* Styling for the new logo group container */
+/* Logo Styling */
+.nav-logo { margin: 0; padding: 0; }
+.nav-logo img { height: 40px; width: auto; display: block; }
 .logo-group {
     display: flex;
-    flex-direction: column; /* Stack children vertically */
-    align-items: center; /* Center the logo and text horizontally */
-    line-height: 1; /* Tighten up the space */
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
 }
-
-/* Styling for the new text below the logo */
 .logo-tagline {
-    font-size: 0.89rem; /* Make it smaller than the logo */
+    font-size: 0.89rem;
     font-family: var(--font-primary);
-    color: var(--color-text-secondary); /* Use a subtle color */
-    margin: 0; /* Remove default paragraph margin */
-    padding-top: 2px; /* Small space between logo and text */
-}
-
-/* Ensure the nav-logo itself doesn't have extra margin or padding */
-.nav-logo {
+    color: var(--color-text-secondary);
     margin: 0;
-    padding: 0;
+    padding-top: 2px;
 }
 
+/* Navigation Menu Base */
 .nav-menu {
     display: flex;
     list-style: none;
@@ -241,6 +190,7 @@ img {
     position: relative;
     padding-bottom: 5px;
     font-size: 0.95rem;
+    cursor: pointer; /* Added cursor pointer */
 }
 
 .nav-link::after {
@@ -257,11 +207,98 @@ img {
 
 .nav-link:hover::after { width: 100%; }
 
-/* Hamburger Menu (Hidden on Desktop) */
+/* ---------------------------------------------------------
+   DROPDOWN MENU LOGIC (UPDATED)
+   --------------------------------------------------------- */
+
+/* --- DESKTOP: Hover Effect --- */
+@media (min-width: 769px) {
+    .nav-item.dropdown {
+        position: relative;
+    }
+
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+        min-width: 180px;
+        z-index: 1002;
+        top: 100%;
+        left: 0;
+        list-style: none;
+        border-radius: 4px;
+        padding: 0.5rem 0;
+        
+        /* Animation Prep */
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Show on Hover */
+    .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .dropdown-menu li a {
+        color: #333;
+        padding: 10px 20px;
+        display: block;
+        font-size: 0.9rem;
+        transition: background 0.2s;
+        text-decoration: none;
+    }
+
+    .dropdown-menu li a:hover {
+        background-color: #f1f1f1;
+        color: var(--color-primary-solid);
+    }
+}
+
+/* --- MOBILE: Click / Accordion Effect --- */
+@media (max-width: 768px) {
+    .nav-item.dropdown .dropdown-menu {
+        display: none; /* Hidden by default */
+        position: static; /* Pushes content down */
+        width: 100%;
+        box-shadow: none; 
+        background-color: rgba(255, 255, 255, 0.05); /* Slight contrast */
+        padding-left: 0;
+        margin-top: 10px;
+        list-style: none;
+        border-left: 2px solid var(--color-primary-solid); /* Accent Line */
+    }
+
+    .dropdown-menu li a {
+        color: #d1d1d1;
+        padding: 12px 20px 12px 30px; /* Indent */
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        display: block;
+        text-decoration: none;
+    }
+
+    /* The class toggled by JS */
+    .nav-item.dropdown.active .dropdown-menu {
+        display: block;
+        animation: slideDown 0.3s ease forwards;
+    }
+
+    @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+}
+
+/* --------------------------------------------------------- */
+
+/* Hamburger Menu */
 .hamburger {
     display: none;
     cursor: pointer;
-    z-index: 1001; /* Above mobile menu */
+    z-index: 1001;
 }
 
 .bar {
@@ -273,29 +310,26 @@ img {
     transition: all 0.3s ease;
 }
 
-/* Hamburger Animation classes (Toggled via JS) */
 .hamburger.active .bar:nth-child(2) { opacity: 0; }
 .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
 .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
-
 
 /* =========================================
    5. Hero Section
    ========================================= */
 .hero {
-    min-height: 100vh; /* Changed to min-height for safety */
+    min-height: 100vh;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.8)), url('');
+    background: linear-gradient(rgba(10, 10, 10, 0.6), rgba(10, 10, 10, 0.8)), url(''); /* Add your image URL here */
     background-size: cover;
     background-position: center;
     padding: 0 2rem;
-    margin-top: -80px; /* Pull behind header */
-    padding-top: 80px; /* Push content down */
+    margin-top: -80px;
+    padding-top: 80px;
 }
 
 .hero-title {
@@ -321,7 +355,6 @@ img {
 }
 
 .service-card {
-    /* DEFAULT: Black/Dark Background */
     background: var(--color-surface); 
     padding: 3rem 2rem;
     border-radius: var(--border-radius);
@@ -330,51 +363,32 @@ img {
     transition: all 0.4s ease;
 }
 
-/* Icon Styling - Gradient Text Effect */
 .service-card ion-icon {
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
     transition: all 0.3s ease;
-    
-    /* This makes the icon take the gradient color */
     background: var(--color-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    
-    /* Fallback for older browsers */
     color: #8b5cf6; 
 }
 
-/* --- HOVER EFFECTS --- */
-
 .service-card:hover {
     transform: translateY(-10px);
-    
-    /* HOVER: Background becomes the Primary Gradient */
     background: var(--color-primary);
     border-color: transparent;
     box-shadow: 0 15px 40px rgba(139, 92, 246, 0.3);
 }
 
-/* Change Heading to White on Hover */
-.service-card:hover h3 {
-    color: var(--color-white);
-}
-
-/* Change Paragraph to White on Hover */
-.service-card:hover p {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-/* Change Icon to Solid White on Hover */
+.service-card:hover h3 { color: var(--color-white); }
+.service-card:hover p { color: rgba(255, 255, 255, 0.9); }
 .service-card:hover ion-icon {
-    /* We must remove the gradient background from the icon so it can be white */
     background: none; 
     -webkit-text-fill-color: initial;
-    
     color: var(--color-white);
     transform: scale(1.1);
 }
+
 /* =========================================
    7. About Section
    ========================================= */
@@ -389,20 +403,15 @@ img {
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
 }
+
 /* =========================================
    New Section: Our Vision
    ========================================= */
 .vision {
-    /* Darker background to separate it from the 'About' section */
-   
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
-
-/* Optional: Adjust alignment for the text in this specific section */
-.vision .section-title::after {
-    margin: 1rem 0 0 0; /* Aligns the underline to the left */
-}
+.vision .section-title::after { margin: 1rem 0 0 0; }
 
 /* =========================================
    8. Contact Section
@@ -463,14 +472,12 @@ img {
 }
 
 .footer-col h4 { color: var(--color-primary); font-size: 1.2rem; }
-
 .footer-col ul { list-style: none; }
 .footer-col ul li { margin-bottom: 0.8rem; }
 .footer-col ul li a { color: var(--color-text-secondary); transition: 0.3s; }
 
-/* --- UPDATED SECTION --- */
 .footer-col ul li a:hover { 
-    color: var(--color-primary-solid); /* Now uses the solid color */
+    color: var(--color-primary-solid); 
     padding-left: 5px; 
 }
 
@@ -480,8 +487,6 @@ img {
     color: var(--color-text-secondary);
     transition: 0.3s;
 }
-
-/* --- UNCHANGED AS REQUESTED --- */
 .social-links-footer a:hover { color: #8b5cf6; }
 
 .footer-copyright {
@@ -490,19 +495,14 @@ img {
     border-top: 1px solid #222;
     font-size: 0.9rem;
 }
-/* ============================
-   Footer Logo Specific Styling
-   ============================ */
 
-/* 1. Sizing and spacing for the footer logo */
+/* Footer Logo Specific Styling */
 .footer-col .nav-logo img {
-    height: 40px; /* Slightly larger than header logo usually looks better in footer */
+    height: 40px;
     width: auto;
-    margin-bottom: 10px; /* Space between logo and "Digital Services" text */
+    margin-bottom: 10px;
 }
 
-/* 2. Fix for Mobile Alignment */
-/* Since your existing CSS centers text on mobile, we need to manually center the image */
 @media (max-width: 768px) {
     .footer-col .nav-logo img {
         margin-left: auto;
@@ -512,10 +512,10 @@ img {
 }
 
 /* =================================================================
-   10. RESPONSIVE MEDIA QUERIES (Mobile & Tablet)
+   10. RESPONSIVE MEDIA QUERIES (Layout Specifics)
    ================================================================= */
 
-/* --- Tablet & Small Laptop (Max Width: 1024px) --- */
+/* --- Tablet & Small Laptop --- */
 @media (max-width: 1024px) {
     .hero-title { font-size: 3.5rem; }
     .services-grid { gap: 1.5rem; }
@@ -523,42 +523,49 @@ img {
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
 }
 
-/* --- Tablet Portrait (Max Width: 768px) --- */
+/* --- Tablet Portrait / Mobile --- */
 @media (max-width: 768px) {
     
-    /* Navigation: Hamburger Logic */
+    /* Navigation Layout */
     .hamburger { display: block; }
     
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 0; /* Starts at very top */
+        top: 0; 
         gap: 0;
         flex-direction: column;
         background-color: var(--color-bg);
         width: 100%;
-        height: 100vh; /* Full screen */
-        padding-top: 6rem; /* Space for X button */
+        height: 100vh; 
+        padding-top: 6rem; 
         transition: 0.3s ease-in-out;
-        z-index: 999; /* Behind hamburger */
+        z-index: 999; 
+        /* Ensure it scrolls if menu is too long */
+        overflow-y: auto; 
     }
     
     .nav-menu.active { left: 0; }
     
     .nav-item { 
-        margin: 1.5rem 0; 
+        margin: 0; /* Reset margins */
         width: 100%;
         text-align: center;
+        padding: 0 2rem; /* Side padding for items */
     }
 
-    .nav-link { font-size: 1.5rem; }
+    .nav-link { 
+        font-size: 1.5rem; 
+        display: block;
+        padding: 1.5rem 0;
+    }
     
     /* Hero */
     .hero-title { font-size: 2.8rem; }
     .hero-subtitle { font-size: 1.1rem; }
 
     /* Services */
-    .services-grid { grid-template-columns: 1fr; /* Stack cards */ }
+    .services-grid { grid-template-columns: 1fr; }
     .service-card { padding: 2rem; }
 
     /* About */
@@ -566,7 +573,6 @@ img {
         grid-template-columns: 1fr; 
         gap: 2.5rem;
     }
-    /* Reorder: Image first, text second */
     .about-image { order: -1; }
 
     /* Contact */
@@ -577,23 +583,17 @@ img {
     .social-links-footer { justify-content: center; display: flex; }
 }
 
-/* --- Mobile (Max Width: 480px) --- */
+/* --- Small Mobile --- */
 @media (max-width: 480px) {
     .section-title { font-size: 2rem; }
-    
     .hero-title { font-size: 2.2rem; }
     .hero-subtitle { font-size: 1rem; margin-bottom: 2rem; }
     .cta-button.large { width: 100%; padding: 15px 20px; }
-    
     .navbar { padding: 0 1rem; }
     .nav-logo { font-size: 1.5rem; }
-    
-    /* Adjust Nav Links for small screens */
     .nav-link { font-size: 1.2rem; }
-    
     .container { padding: 0 1rem; }
 }
-
 
 /* ========
    STYLES FOR MODERN-SERVICES.HTML
