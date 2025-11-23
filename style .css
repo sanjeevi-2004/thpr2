@@ -1136,9 +1136,33 @@ img {
     border-color: var(--color-primary);
 }
 
+/* Update this existing class */
 .auth-options {
-    text-align: right;
+    display: flex;
+    justify-content: space-between; /* Pushes Remember Me to left, Link to right */
+    align-items: center;
     margin-bottom: 2rem;
+}
+
+/* Add these new classes */
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--color-text);
+}
+
+.remember-me input {
+    cursor: pointer;
+    width: 16px; 
+    height: 16px;
+    accent-color: var(--color-primary); /* Makes the checkmark match your theme */
+}
+
+.remember-me label {
+    cursor: pointer;
+    user-select: none; /* Prevents text highlighting when clicking label */
 }
 
 .forgot-link {
@@ -1183,6 +1207,40 @@ img {
     display: inline-block;
     width: auto; /* Override full-width */
     margin-top: 1rem;
+}
+/* Wrapper to hold input and icon together */
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Position the eye icon */
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%); /* Vertically center */
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    font-size: 1.2rem;
+    display: flex; /* Fixes icon alignment */
+}
+
+.password-toggle:hover {
+    color: var(--color-primary);
+}
+
+/* Add padding to the right of input so text doesn't hit the eye */
+.form-group-auth input[type="password"],
+.form-group-auth input[type="text"] {
+    padding-right: 45px; 
+}
+.error-message {
+    color: #ff4d4d; /* Red color */
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: block;
+    height: 1.2em; /* Keeps space so layout doesn't jump */
 }
 
 

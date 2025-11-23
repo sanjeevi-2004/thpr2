@@ -44,7 +44,7 @@
                 <h2>Create an Account</h2>
                 <p class="auth-subtitle">Get started with Innovate.</p>
 
-                <form class="auth-form" action="404.html">
+                <form class="auth-form" id="signup-form" action="404.html">
                     
                     <div class="form-group-auth">
                         <label for="name">Full Name</label>
@@ -58,12 +58,23 @@
                     
                     <div class="form-group-auth">
                         <label for="password">Password</label>
-                        <input type="password" id="password" required>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" required>
+                            <span class="password-toggle" onclick="togglePassword('password', 'eye-icon-1')">
+                                <ion-icon name="eye-outline" id="eye-icon-1"></ion-icon>
+                            </span>
+                        </div>
                     </div>
 
                     <div class="form-group-auth">
                         <label for="confirm-password">Confirm Password</label>
-                        <input type="password" id="confirm-password" required>
+                        <div class="password-wrapper">
+                            <input type="password" id="confirm-password" required>
+                            <span class="password-toggle" onclick="togglePassword('confirm-password', 'eye-icon-2')">
+                                <ion-icon name="eye-outline" id="eye-icon-2"></ion-icon>
+                            </span>
+                        </div>
+                        <small id="password-error" class="error-message"></small>
                     </div>
                     
                     <button type="submit" class="cta-button">Create Account</button>
@@ -76,14 +87,11 @@
         </section>
     </main>
 
- 
- <!-- ======== FOOTER (NEW LAYOUT) ======== -->
-<footer class="footer">
+ <footer class="footer">
     <div class="container">
         <div class="footer-grid">
             
-            <!-- Column 1: Brand & Socials -->
-          <div class="footer-col">
+            <div class="footer-col">
     <a href="index.html" class="nav-logo">
         <img src="./stackly.png" alt="Stackly Logo">
     </a>
@@ -109,7 +117,6 @@
 </div>
 </div>
             
-            <!-- Column 2: Quick Links -->
             <div class="footer-col">
                 <h4>Quick Links</h4>
                 <ul>
@@ -120,7 +127,6 @@
                 </ul>
             </div>
             
-            <!-- Column 3: Services -->
             <div class="footer-col">
                 <h4>Services</h4>
                 <ul>
@@ -131,7 +137,6 @@
                 </ul>
             </div>
             
-            <!-- Column 4: Get in Touch -->
             <div class="footer-col">
                 <h4>Get in Touch</h4>
                 <p>
@@ -143,15 +148,12 @@
 
         </div>
         
-        <!-- Copyright Bar -->
         <div class="footer-copyright">
             <p>&copy; 2025 Innovate. All rights reserved.</p>
         </div>
     </div>
 </footer>
-<!-- ======== END OF FOOTER ======== -->
-
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="script.js"></script>
 </body>

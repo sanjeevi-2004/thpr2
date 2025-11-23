@@ -177,3 +177,57 @@ if (document.querySelector('.modern-services-layout')) {
     });
 }
 
+/* =========================================
+   1. UNIVERSAL PASSWORD TOGGLE FUNCTION
+   Works for Login, Signup, and Confirm Password
+   ========================================= */
+function togglePassword(inputId, iconId) {
+    const input = document.getElementById(inputId);
+    const icon = document.getElementById(iconId);
+
+    if (input && icon) {
+        if (input.type === 'password') {
+            // Switch to Text
+            input.type = 'text';
+            icon.setAttribute('name', 'eye-off-outline');
+        } else {
+            // Switch back to Password
+            input.type = 'password';
+            icon.setAttribute('name', 'eye-outline');
+        }
+    } else {
+        console.error("Element not found: Check your IDs");
+    }
+}
+
+/* =========================================
+   2. SIGNUP FORM VALIDATION (Password Match)
+   Only runs if the signup form exists on the page
+   ========================================= */
+document.addEventListener("DOMContentLoaded", function() {
+    const signupForm = document.getElementById('signup-form');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirm-password');
+    const errorMsg = document.getElementById('password-error');
+
+    if (signupForm) {
+        signupForm.addEventListener('submit', function(e) {
+            // Check if passwords match
+            if (password.value !== confirmPassword.value) {
+                e.preventDefault(); // STOP form submission
+                
+                errorMsg.textContent = "Passwords do not match. Please try again.";
+                confirmPassword.style.borderColor = "#ff4d4d";
+            } else {
+                errorMsg.textContent = "";
+                confirmPassword.style.borderColor = "";
+            }
+        });
+        
+        // Clear error when user types
+        confirmPassword.addEventListener('input', function() {
+            errorMsg.textContent = "";
+            confirmPassword.style.borderColor = "";
+        });
+    }
+});
